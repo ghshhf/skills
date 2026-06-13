@@ -1,6 +1,6 @@
 ---
 name: trl-training
-description: "[Local Training] Train and fine-tune transformer language models locally using TRL CLI commands (trl sft, trl dpo, etc.). Supports SFT, DPO, GRPO, KTO, RLOO and Reward Model training. Requires local GPU/CPU. Use for local training with CLI workflow.
+description: '[Local Training] Train and fine-tune transformer language models locally using TRL CLI commands (trl sft, trl dpo, etc.). Supports SFT, DPO, GRPO, KTO, RLOO and Reward Model training. Requires local GPU/CPU. Use for local training with CLI workflow.'
 license: Apache-2.0
 metadata:
   version: "1.0.0"

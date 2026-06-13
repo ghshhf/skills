@@ -1,6 +1,6 @@
 ---
 name: huggingface-llm-trainer
-description: "[Cloud Training] Train or fine-tune language and vision models using TRL or Unsloth on Hugging Face Jobs cloud GPUs. No local GPU required. Covers SFT, DPO, GRPO and reward modeling, plus GGUF conversion for local deployment. Use when users want cloud training without local infrastructure.
+description: '[Cloud Training] Train or fine-tune language and vision models using TRL or Unsloth on Hugging Face Jobs cloud GPUs. No local GPU required. Covers SFT, DPO, GRPO and reward modeling, plus GGUF conversion for local deployment. Use when users want cloud training without local infrastructure.'
 license: Complete terms in LICENSE.txt
 ---
 
