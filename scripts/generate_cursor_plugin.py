@@ -61,7 +61,7 @@ def collect_skills() -> list[str]:
     skills: list[str] = []
     for skill_md in sorted(ROOT.glob("skills/*/SKILL.md")):
         meta = parse_frontmatter(skill_md.read_text(encoding="utf-8"))
-        name = meta.get("name", "").strip()
+        name = (meta.get("TERMUX_PKG_NAME") or meta.get("name", "")).strip()
         if not name:
             continue
         skills.append(name)

@@ -1,6 +1,12 @@
 ---
-name: huggingface-spaces
-description: Build, deploy, and maintain applications on Hugging Face Spaces — Gradio / Docker / Static SDKs, ZeroGPU and dedicated hardware, model loading, debugging, buckets, inference providers, community grants. Use whenever the user asks to create or host an app on Hugging Face, port code onto ZeroGPU, fix a Space that won't build or run, or otherwise work with `hf spaces …`, `@spaces.GPU`, Space README frontmatter, or the `spaces` Python package.
+TERMUX_PKG_NAME: huggingface-spaces
+TERMUX_PKG_DESCRIPTION: Build, deploy, and maintain applications on Hugging Face Spaces — Gradio / Docker / Static SDKs, ZeroGPU and dedicated hardware, model loading, debugging, buckets, inference providers, community grants
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/spaces-overview
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli,huggingface-gradio,huggingface-zerogpu
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Hugging Face Spaces

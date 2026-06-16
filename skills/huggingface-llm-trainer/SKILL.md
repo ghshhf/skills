@@ -1,7 +1,12 @@
 ---
-name: huggingface-llm-trainer
-description: Train or fine-tune language and vision models using TRL (Transformer Reinforcement Learning) or Unsloth with Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment. Includes guidance on the TRL Jobs package, UV scripts with PEP 723 format, dataset preparation and validation, hardware selection, cost estimation, Trackio monitoring, Hub authentication, model selection/leaderboards and model persistence. Use for tasks involving cloud GPU training, GGUF conversion, or when users mention training on Hugging Face Jobs without local GPU setup.
-license: Complete terms in LICENSE.txt
+TERMUX_PKG_NAME: huggingface-llm-trainer
+TERMUX_PKG_DESCRIPTION: Train or fine-tune language models using TRL on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/trl
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: Apache-2.0
+TERMUX_PKG_DEPENDS: hf-cli,huggingface-best,huggingface-trackio
+TERMUX_PKG_CATEGORY: training
 ---
 
 # TRL Training on Hugging Face Jobs

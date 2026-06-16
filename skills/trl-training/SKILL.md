@@ -1,29 +1,12 @@
 ---
-name: trl-training
-description: Train and fine-tune transformer language models using TRL (Transformers Reinforcement Learning). Supports SFT, DPO, GRPO, KTO, RLOO and Reward Model training via CLI commands.
-license: Apache-2.0
-metadata:
-  version: "1.0.0"
-  author: huggingface
-  commands:
-    - trl sft
-    - trl dpo
-    - trl grpo
-    - trl kto
-    - trl rloo
-    - trl reward
-  categories:
-    - machine-learning
-    - llm-training
-    - reinforcement-learning
-  tags:
-    - rlhf
-    - supervised-fine-tuning
-    - dpo
-    - grpo
-    - huggingface
-    - transformers
-  documentation: https://huggingface.co/docs/trl/en/clis
+TERMUX_PKG_NAME: trl-training
+TERMUX_PKG_DESCRIPTION: Train and fine-tune transformer language models using TRL (Transformers Reinforcement Learning). Supports SFT, DPO, GRPO, KTO, RLOO and Reward Model training via CLI commands.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/trl
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: Apache-2.0
+TERMUX_PKG_DEPENDS: hf-cli,huggingface-llm-trainer
+TERMUX_PKG_CATEGORY: development
 ---
 
 # TRL Training Skill

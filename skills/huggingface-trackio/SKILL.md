@@ -1,6 +1,12 @@
 ---
-name: huggingface-trackio
-description: Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.
+TERMUX_PKG_NAME: huggingface-trackio
+TERMUX_PKG_DESCRIPTION: Track and visualize ML training experiments with Trackio. Use when logging metrics during training (Python API), firing alerts for training diagnostics, or retrieving/analyzing logged metrics (CLI). Supports real-time dashboard visualization, alerts with webhooks, HF Space syncing, and JSON output for automation.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/trackio
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Trackio - Experiment Tracking for ML Training

@@ -1,6 +1,12 @@
 ---
-name: huggingface-tool-builder
-description: Use this skill when the user wants to build tool/scripts or achieve a task where using data from the Hugging Face API would help. This is especially useful when chaining or combining API calls or the task will be repeated/automated. This Skill creates a reusable script to fetch, enrich or process data.
+TERMUX_PKG_NAME: huggingface-tool-builder
+TERMUX_PKG_DESCRIPTION: Build reusable scripts for Hugging Face Hub and API workflows. Useful for chaining API calls, enriching Hub metadata, or automating repeated tasks.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/api
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: tools
 ---
 
 # Hugging Face API Tool Builder

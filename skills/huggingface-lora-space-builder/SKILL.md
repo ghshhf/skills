@@ -1,6 +1,12 @@
 ---
-name: huggingface-lora-space-builder
-description: Build and publish a Gradio demo on Hugging Face Spaces for a user-provided LoRA. Use when someone asks to create, generate, ship, or publish a Space, demo, Gradio app, or playground for a LoRA — including LoRAs for Qwen-Image, Qwen-Image-Edit, LTX-Video, Wan, FLUX, SDXL, or other diffusion base models. Also triggers when someone describes a LoRA they trained or hosts on the Hub and wants to share it. Covers picking the right base pipeline and `diffusers` inference recipe, designing a UI tailored to the LoRA's task and inputs (Union/multi-task control, edit, video, image, etc.), respecting model-card recommendations (trigger words, steps, guidance, LoRA scale, example inputs), and shipping to ZeroGPU hardware as a private Space by default.
+TERMUX_PKG_NAME: huggingface-lora-space-builder
+TERMUX_PKG_DESCRIPTION: Build and publish a Gradio demo on Hugging Face Spaces for a user-provided LoRA. Covers picking the right base pipeline and `diffusers` inference recipe, designing a UI tailored to the LoRA's task and inputs, respecting model-card recommendations, and shipping to ZeroGPU hardware.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/diffusers
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: huggingface-spaces,huggingface-gradio,huggingface-zerogpu
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Gradio LoRA Space Builder

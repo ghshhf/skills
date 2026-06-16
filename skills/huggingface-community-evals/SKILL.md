@@ -1,6 +1,12 @@
 ---
-name: huggingface-community-evals
-description: Run evaluations for Hugging Face Hub models using inspect-ai and lighteval on local hardware. Use for backend selection, local GPU evals, and choosing between vLLM / Transformers / accelerate. Not for HF Jobs orchestration, model-card PRs, .eval_results publication, or community-evals automation.
+TERMUX_PKG_NAME: huggingface-community-evals
+TERMUX_PKG_DESCRIPTION: Run evaluations for Hugging Face Hub models using inspect-ai and lighteval on local hardware. Use for backend selection, local GPU evals, and choosing between vLLM / Transformers / accelerate. Not for HF Jobs orchestration, model-card PRs, .eval_results publication, or community-evals automation.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/model-evaluation
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: tools
 ---
 
 # Overview

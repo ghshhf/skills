@@ -1,0 +1,17 @@
+{
+  "repo": "skills",
+  "owner": "ghshhf",
+  "description": "Agent Skills for AI/ML tasks including dataset creation, model training, evaluation, and research paper publishing on Hugging Face Hub",
+  "homepage": "https://github.com/ghshhf/skills",
+  "pkg_format": "skill",
+  "gpkg": {
+    "name": "skills",
+    "distribution": "skills",
+    "component": "skills",
+    "url": "https://raw.githubusercontent.com/ghshhf/skills/master/skills"
+  },
+  "scripts": {
+    "validate_format": "scripts/generate_agents.py",
+    "publish": "scripts/publish.sh"
+  }
+}

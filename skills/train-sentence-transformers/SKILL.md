@@ -1,6 +1,12 @@
 ---
-name: train-sentence-transformers
-description: Train or fine-tune sentence-transformers models across `SentenceTransformer` (bi-encoder; dense or static embedding model; for retrieval, similarity, clustering, classification, paraphrase mining, dedup, multimodal), `CrossEncoder` (reranker; pair scoring for two-stage retrieval / pair classification), and `SparseEncoder` (SPLADE, sparse embedding model; for learned-sparse retrieval). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing. Use for any sentence-transformers training task.
+TERMUX_PKG_NAME: train-sentence-transformers
+TERMUX_PKG_DESCRIPTION: Train or fine-tune sentence-transformers models across all three architectures: SentenceTransformer (bi-encoder embeddings), CrossEncoder (rerankers), and SparseEncoder (SPLADE). Covers loss selection, hard-negative mining, evaluators, distillation, LoRA, Matryoshka, and Hugging Face Hub publishing.
+TERMUX_PKG_HOMEPAGE: https://www.sbert.net/
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: Apache-2.0
+TERMUX_PKG_DEPENDS: hf-cli,huggingface-llm-trainer
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Train a sentence-transformers Model

@@ -50,8 +50,8 @@ def collect_skills() -> list[dict[str, str]]:
     skills: list[dict[str, str]] = []
     for skill_md in ROOT.glob("skills/*/SKILL.md"):
         meta = parse_frontmatter(skill_md.read_text(encoding="utf-8"))
-        name = meta.get("name")
-        description = meta.get("description")
+        name = meta.get("TERMUX_PKG_NAME") or meta.get("name")
+        description = meta.get("TERMUX_PKG_DESCRIPTION") or meta.get("description")
         if not name or not description:
             continue
         skills.append(
@@ -61,7 +61,6 @@ def collect_skills() -> list[dict[str, str]]:
                 "path": skill_md.parent.relative_to(ROOT).as_posix(),
             }
         )
-    # Keep deterministic order for consistent output
     return sorted(skills, key=lambda s: s["name"].lower())
 
 

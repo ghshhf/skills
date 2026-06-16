@@ -1,14 +1,12 @@
 ---
-name: huggingface-best
-description: >
-  Use when the user asks about finding the best, top, or recommended model for a task,
-  wants to know what AI model to use, or wants to compare models by benchmark scores.
-  Triggers on: "best model for X", "what model should I use for", "top models for [task]",
-  "which model runs on my laptop/machine/device", "recommend a model for", "what LLM should
-  I use for", "compare models for", "what's state of the art for", or any question about
-  choosing an AI model for a specific use case. Always use this skill when the user wants
-  model recommendations or comparisons, even if they don't explicitly mention HuggingFace
-  or benchmarks.
+TERMUX_PKG_NAME: huggingface-best
+TERMUX_PKG_DESCRIPTION: Find the best AI model for any task by querying Hugging Face leaderboards and benchmarks. Recommends top models based on task type, hardware constraints, and benchmark scores
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/benchmarks
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: tools
 ---
 
 # HuggingFace Best Model Finder

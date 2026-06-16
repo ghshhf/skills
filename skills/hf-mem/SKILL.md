@@ -1,6 +1,12 @@
 ---
-name: hf-mem
-description: Hugging Face CLI to estimate the required memory to load Safetensors or GGUF model weights for inference from the Hugging Face Hub
+TERMUX_PKG_NAME: hf-mem
+TERMUX_PKG_DESCRIPTION: Hugging Face CLI to estimate the required memory to load Safetensors or GGUF model weights for inference from the Hugging Face Hub
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/huggingface_hub/en/guides/hf_mem
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: tools
 ---
 
 `hf_mem` estimates the required memory for inference, including model weights and an optional KV cache, for Safetensors and GGUF for models on the Hugging Face Hub using HTTP Range requests i.e., without downloading or loading any weights locally.

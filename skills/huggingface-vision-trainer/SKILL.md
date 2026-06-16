@@ -1,6 +1,12 @@
 ---
-name: huggingface-vision-trainer
-description: Trains and fine-tunes vision models for object detection (D-FINE, RT-DETR v2, DETR, YOLOS), image classification (timm models — MobileNetV3, MobileViT, ResNet, ViT/DINOv3 — plus any Transformers classifier), and SAM/SAM2 segmentation using Hugging Face Transformers on Hugging Face Jobs cloud GPUs. Covers COCO-format dataset preparation, Albumentations augmentation, mAP/mAR evaluation, accuracy metrics, SAM segmentation with bbox/point prompts, DiceCE loss, hardware selection, cost estimation, Trackio monitoring, and Hub persistence. Use when users mention training object detection, image classification, SAM, SAM2, segmentation, image matting, DETR, D-FINE, RT-DETR, ViT, timm, MobileNet, ResNet, bounding box models, or fine-tuning vision models on Hugging Face Jobs.
+TERMUX_PKG_NAME: huggingface-vision-trainer
+TERMUX_PKG_DESCRIPTION: Train and fine-tune object detection models (RTDETRv2, YOLOS, DETR) and image classification models (timm and transformers models) using Transformers Trainer API on Hugging Face Jobs infrastructure or locally. Includes COCO dataset format support, Albumentations augmentation, mAP/mAR metrics, trackio tracking, hardware selection, and Hub persistence.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/transformers/tasks/object_detection
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: Apache-2.0
+TERMUX_PKG_DEPENDS: hf-cli,huggingface-llm-trainer
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Vision Model Training on Hugging Face Jobs

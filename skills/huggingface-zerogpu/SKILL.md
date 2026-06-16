@@ -1,6 +1,12 @@
 ---
-name: huggingface-zerogpu
-description: AI demos and GPU compute with Gradio Spaces and Hugging Face Spaces ZeroGPU. Use when writing or reviewing code that uses `@spaces.GPU`, configuring `python_version` or `requirements.txt` for a ZeroGPU Space, or handling ZeroGPU-specific code constraints — pickle-based process isolation, `gr.State` semantics across the worker boundary, no `torch.compile` (use AoTI instead), CUDA wheel-only builds (no `nvcc` at build or runtime), large vs xlarge sizing, and dynamic duration callables. Make sure to use this skill whenever the user mentions ZeroGPU, `@spaces.GPU`, or the `spaces` Python package, or hits ZeroGPU-specific code errors like `PicklingError` across the worker boundary, `illegal duration`, or `flash-attn` wheel-build failures — even when the user does not explicitly ask for ZeroGPU coding guidance. Trigger on `import spaces` or `@spaces.GPU` in code.
+TERMUX_PKG_NAME: huggingface-zerogpu
+TERMUX_PKG_DESCRIPTION: Coding rules for Gradio Spaces using Hugging Face Spaces ZeroGPU hardware. Covers `@spaces.GPU`, duration and quota tuning, pickle-based process isolation, `gr.State` semantics across the worker boundary, the CUDA availability model, concurrency safety, and CUDA wheel-only build constraints.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/spaces-zerogpu
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: huggingface-spaces,huggingface-gradio
+TERMUX_PKG_CATEGORY: development
 ---
 
 # Hugging Face ZeroGPU

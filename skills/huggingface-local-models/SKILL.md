@@ -1,6 +1,12 @@
 ---
-name: huggingface-local-models
-description: "Use to select models to run locally with llama.cpp and GGUF on CPU, Mac Metal, CUDA, or ROCm. Covers finding GGUFs, quant selection, running servers, exact GGUF file lookup, conversion, and OpenAI-compatible local serving."
+TERMUX_PKG_NAME: huggingface-local-models
+TERMUX_PKG_DESCRIPTION: Use to select models to run locally with llama.cpp and GGUF on CPU, Mac Metal, CUDA, or ROCm. Covers finding GGUFs, quant selection, running servers, exact GGUF file lookup, conversion, and OpenAI-compatible local serving.
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/gguf-llamacpp
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: MIT
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: tools
 ---
 
 # Hugging Face Local Models

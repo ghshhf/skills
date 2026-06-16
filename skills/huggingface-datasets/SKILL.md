@@ -1,6 +1,12 @@
 ---
-name: huggingface-datasets
-description: Use this skill for Hugging Face Dataset Viewer API workflows that fetch subset/split metadata, paginate rows, search text, apply filters, download parquet URLs, and read size or statistics.
+TERMUX_PKG_NAME: huggingface-datasets
+TERMUX_PKG_DESCRIPTION: Explore, query, and extract data from any Hugging Face dataset using the Dataset Viewer REST API and npx tooling
+TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/datasets
+TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_VERSION: 1.0.0
+TERMUX_PKG_LICENSE: Apache-2.0
+TERMUX_PKG_DEPENDS: hf-cli
+TERMUX_PKG_CATEGORY: data
 ---
 
 # Hugging Face Dataset Viewer
