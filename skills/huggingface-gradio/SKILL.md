@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-gradio
 TERMUX_PKG_DESCRIPTION: Build Gradio web UIs and demos in Python. Use when creating or editing Gradio apps, components, event listeners, layouts, or chatbots
 TERMUX_PKG_HOMEPAGE: https://www.gradio.app/
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: Apache-2.0
 TERMUX_PKG_DEPENDS: hf-cli,huggingface-spaces

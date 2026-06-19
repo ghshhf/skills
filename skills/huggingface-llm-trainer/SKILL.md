@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-llm-trainer
 TERMUX_PKG_DESCRIPTION: Train or fine-tune language models using TRL on Hugging Face Jobs infrastructure. Covers SFT, DPO, GRPO and reward modeling training methods, plus GGUF conversion for local deployment
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/trl
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: Apache-2.0
 TERMUX_PKG_DEPENDS: hf-cli,huggingface-best,huggingface-trackio

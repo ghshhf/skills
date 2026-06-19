@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: transformers-js
 TERMUX_PKG_DESCRIPTION: Run state-of-the-art machine learning models directly in JavaScript/TypeScript for NLP, computer vision, audio processing, and multimodal tasks. Works in Node.js and browsers with WebGPU/WASM using Hugging Face models.
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/transformers.js
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 4.x
 TERMUX_PKG_LICENSE: Apache-2.0
 TERMUX_PKG_DEPENDS: hf-cli

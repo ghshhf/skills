@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-spaces
 TERMUX_PKG_DESCRIPTION: Build, deploy, and maintain applications on Hugging Face Spaces — Gradio / Docker / Static SDKs, ZeroGPU and dedicated hardware, model loading, debugging, buckets, inference providers, community grants
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/spaces-overview
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: MIT
 TERMUX_PKG_DEPENDS: hf-cli,huggingface-gradio,huggingface-zerogpu

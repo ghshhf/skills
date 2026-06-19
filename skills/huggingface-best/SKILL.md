@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-best
 TERMUX_PKG_DESCRIPTION: Find the best AI model for any task by querying Hugging Face leaderboards and benchmarks. Recommends top models based on task type, hardware constraints, and benchmark scores
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/benchmarks
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: MIT
 TERMUX_PKG_DEPENDS: hf-cli

@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: hf-cli
 TERMUX_PKG_DESCRIPTION: Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing models, datasets, spaces, buckets, repos, papers, jobs, and more on the Hugging Face Hub
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/cli
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: MIT
 TERMUX_PKG_DEPENDS: 

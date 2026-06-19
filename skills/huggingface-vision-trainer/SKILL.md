@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-vision-trainer
 TERMUX_PKG_DESCRIPTION: Train and fine-tune object detection models (RTDETRv2, YOLOS, DETR) and image classification models (timm and transformers models) using Transformers Trainer API on Hugging Face Jobs infrastructure or locally. Includes COCO dataset format support, Albumentations augmentation, mAP/mAR metrics, trackio tracking, hardware selection, and Hub persistence.
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/transformers/tasks/object_detection
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: Apache-2.0
 TERMUX_PKG_DEPENDS: hf-cli,huggingface-llm-trainer

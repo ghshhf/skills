@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-lora-space-builder
 TERMUX_PKG_DESCRIPTION: Build and publish a Gradio demo on Hugging Face Spaces for a user-provided LoRA. Covers picking the right base pipeline and `diffusers` inference recipe, designing a UI tailored to the LoRA's task and inputs, respecting model-card recommendations, and shipping to ZeroGPU hardware.
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/diffusers
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: MIT
 TERMUX_PKG_DEPENDS: huggingface-spaces,huggingface-gradio,huggingface-zerogpu

@@ -2,7 +2,7 @@
 TERMUX_PKG_NAME: huggingface-zerogpu
 TERMUX_PKG_DESCRIPTION: Coding rules for Gradio Spaces using Hugging Face Spaces ZeroGPU hardware. Covers `@spaces.GPU`, duration and quota tuning, pickle-based process isolation, `gr.State` semantics across the worker boundary, the CUDA availability model, concurrency safety, and CUDA wheel-only build constraints.
 TERMUX_PKG_HOMEPAGE: https://huggingface.co/docs/hub/spaces-zerogpu
-TERMUX_PKG_MAINTAINER: @huggingface
+TERMUX_PKG_MAINTAINER: "@huggingface"
 TERMUX_PKG_VERSION: 1.0.0
 TERMUX_PKG_LICENSE: MIT
 TERMUX_PKG_DEPENDS: huggingface-spaces,huggingface-gradio
