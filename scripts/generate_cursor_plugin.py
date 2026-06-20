@@ -23,6 +23,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from frontmatter_utils import parse_frontmatter
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -42,19 +43,6 @@ def load_json(path: Path) -> dict:
     if not path.exists():
         raise FileNotFoundError(f"Missing required file: {path}")
     return json.loads(path.read_text(encoding="utf-8"))
-
-
-def parse_frontmatter(text: str) -> dict[str, str]:
-    match = re.search(r"^---\s*\n(.*?)\n---\s*", text, re.DOTALL)
-    if not match:
-        return {}
-    data: dict[str, str] = {}
-    for line in match.group(1).splitlines():
-        if ":" not in line:
-            continue
-        key, value = line.split(":", 1)
-        data[key.strip()] = value.strip()
-    return data
 
 
 def collect_skills() -> list[str]:

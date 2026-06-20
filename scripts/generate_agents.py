@@ -15,6 +15,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from frontmatter_utils import parse_frontmatter
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -30,20 +31,6 @@ README_TABLE_END = "<!-- END_SKILLS_TABLE -->"
 
 def load_template() -> str:
     return TEMPLATE_PATH.read_text(encoding="utf-8")
-
-
-def parse_frontmatter(text: str) -> dict[str, str]:
-    """Parse a minimal YAML-ish frontmatter block without external deps."""
-    match = re.search(r"^---\s*\n(.*?)\n---\s*", text, re.DOTALL)
-    if not match:
-        return {}
-    data: dict[str, str] = {}
-    for line in match.group(1).splitlines():
-        if ":" not in line:
-            continue
-        key, value = line.split(":", 1)
-        data[key.strip()] = value.strip()
-    return data
 
 
 def collect_skills() -> list[dict[str, str]]:

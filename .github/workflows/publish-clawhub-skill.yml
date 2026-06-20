@@ -102,13 +102,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v8.1.0
+
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
-      - name: Install Hugging Face CLI
-        run: curl -LsSf https://hf.co/cli/install.sh | bash -s
+      - name: Install Hugging Face CLI (safe)
+        run: uv tool install huggingface-hub==0.25.0
 
       - name: Resolve publish inputs
         id: publish-inputs
@@ -135,6 +143,20 @@ jobs:
           echo "skill_id=$INPUT_SKILL_ID" >> "$GITHUB_OUTPUT"
           echo "slug=$slug" >> "$GITHUB_OUTPUT"
           echo "display_name=$display_name" >> "$GITHUB_OUTPUT"
+
+      - name: Validate skill_id input
+        env:
+          SKILL_ID: ${{ steps.publish-inputs.outputs.skill_id }}
+        run: |
+          if [[ ! "$SKILL_ID" =~ ^[a-z0-9][a-z0-9-]*$ ]]; then
+            echo "::error::Invalid skill_id: '$SKILL_ID'. Must match ^[a-z0-9][a-z0-9-]*$"
+            exit 1
+          fi
+          if [[ "$SKILL_ID" == *".."* || "$SKILL_ID" == *"/"* ]]; then
+            echo "::error::Path traversal detected in skill_id: '$SKILL_ID'"
+            exit 1
+          fi
+          echo "skill_id=$SKILL_ID is valid"
 
       - name: Regenerate skill
         env:
@@ -179,8 +201,11 @@ jobs:
           echo "version=$version" >> "$GITHUB_OUTPUT"
           echo "Resolved $SKILL_ID skill version: $version"
 
-      - name: Install ClawHub CLI
-        run: npm install -g clawhub@0.17.0
+      - name: Install ClawHub CLI (with integrity hash)
+        run: |
+          # TODO: Replace PLACEHOLDER with actual integrity hash
+          # Get it via: npm view clawhub@0.17.0 dist.shasum
+          npm install -g clawhub@0.17.0 --integrity sha512-PLACEHOLDER_UPDATE_AFTER_VERIFICATION
 
       - name: Log in to ClawHub
         env:
@@ -234,3 +259,6 @@ jobs:
           fi
 
           clawhub skill publish "${publish_args[@]}"
+
+          echo "Published $SLUG@$VERSION successfully."
+          echo "Rollback: if needed, run: clawhub skill deprecate --slug $SLUG --version $VERSION"

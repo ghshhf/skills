@@ -44,3 +44,29 @@ jobs:
             --repo-root . \
             --out-dir out/skills-index/latest \
             --branch main
+
+      - name: Run tests
+        run: uv run pytest tests/ -v --tb=short
+
+      - name: Validate SKILL.md format
+        run: |
+          uv run python -c "
+          import glob, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          from frontmatter_utils import parse_frontmatter
+          for f in glob.glob('skills/*/SKILL.md'):
+              text = open(f, encoding='utf-8').read()
+              try:
+                  meta = parse_frontmatter(text)
+                  assert isinstance(meta, dict), f'{f}: metadata is not a dict'
+                  # Check required fields
+                  name = meta.get('TERMUX_PKG_NAME') or meta.get('name')
+                  desc = meta.get('TERMUX_PKG_DESCRIPTION') or meta.get('description')
+                  assert name, f'{f}: missing name/TERMUX_PKG_NAME'
+                  assert desc, f'{f}: missing description/TERMUX_PKG_DESCRIPTION'
+              except Exception as e:
+                  print(f'ERROR: {e}', file=sys.stderr)
+                  sys.exit(1)
+          print('All SKILL.md files are valid.')
+          "
