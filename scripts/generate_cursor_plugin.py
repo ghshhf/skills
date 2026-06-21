@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run
 # /// script
 # requires-python = ">=3.10"
-# dependencies = []
+# dependencies = ["pyyaml==6.0.3"]
 # ///
 """Generate Cursor plugin artifacts from existing repo metadata.
 

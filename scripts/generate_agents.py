@@ -1,7 +1,7 @@
 #!/usr/bin/env -S uv run
 # /// script
 # requires-python = ">=3.10"
-# dependencies = []
+# dependencies = ["pyyaml==6.0.3"]
 # ///
 """Generate AGENTS.md from AGENTS_TEMPLATE.md and SKILL.md frontmatter.
 
@@ -70,11 +70,12 @@ def render(template: str, skills: list[dict[str, str]]) -> str:
     return content
 
 
-def load_marketplace() -> dict:
+def load_marketplace(marketplace_path: Path | None = None) -> dict:
     """Load marketplace.json and return parsed structure."""
-    if not MARKETPLACE_PATH.exists():
-        raise FileNotFoundError(f"marketplace.json not found at {MARKETPLACE_PATH}")
-    return json.loads(MARKETPLACE_PATH.read_text(encoding="utf-8"))
+    path = marketplace_path or MARKETPLACE_PATH
+    if not path.exists():
+        raise FileNotFoundError(f"marketplace.json not found at {path}")
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def generate_readme_table(skills: list[dict[str, str]]) -> str:
@@ -137,13 +138,13 @@ def update_readme(skills: list[dict[str, str]]) -> bool:
     return True
 
 
-def validate_marketplace(skills: list[dict[str, str]]) -> list[str]:
+def validate_marketplace(skills: list[dict[str, str]], marketplace_path: Path | None = None) -> list[str]:
     """
     Validate marketplace.json against discovered skills.
     Returns list of error messages (empty = passed).
     """
     errors: list[str] = []
-    marketplace = load_marketplace()
+    marketplace = load_marketplace(marketplace_path)
     plugins = marketplace.get("plugins", [])
 
     # Build lookups (normalize paths: skill uses "skills/x", marketplace uses "./skills/x")

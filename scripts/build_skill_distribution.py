@@ -14,16 +14,17 @@ import io
 import json
 import re
 import shutil
+import sys
 import tarfile
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import yaml
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from frontmatter_utils import parse_frontmatter
 
 DISCOVERY_SCHEMA = "https://schemas.agentskills.io/discovery/0.2.0/schema.json"
-FRONTMATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*(?:\n|\Z)", re.DOTALL)
 SKILL_NAME_RE = re.compile(r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?$")
 IGNORE_DIRS = {"node_modules"}
 IGNORE_FILES = {".DS_Store"}
@@ -43,13 +44,11 @@ def utc_now() -> str:
 
 
 def parse_skill_md(path: Path) -> dict[str, Any]:
+	"""Load SKILL.md frontmatter. Raises ValueError when frontmatter is missing or malformed."""
 	text = path.read_text(encoding="utf-8")
-	match = FRONTMATTER_RE.match(text)
-	if not match:
+	meta = parse_frontmatter(text)
+	if not meta:
 		raise ValueError(f"{path} must start with YAML frontmatter")
-	meta = yaml.safe_load(match.group(1)) or {}
-	if not isinstance(meta, dict):
-		raise ValueError(f"{path} frontmatter must be a mapping")
 	return meta
 
 
@@ -87,8 +86,8 @@ def load_skills(skills_dir: Path) -> list[Skill]:
 	skills: list[Skill] = []
 	for skill_md in sorted(skills_dir.glob("*/SKILL.md")):
 		meta = parse_skill_md(skill_md)
-		name = meta.get("name")
-		description = meta.get("description")
+		name = meta.get("TERMUX_PKG_NAME") or meta.get("name")
+		description = meta.get("TERMUX_PKG_DESCRIPTION") or meta.get("description")
 		if not isinstance(name, str) or not name:
 			raise ValueError(f"{skill_md}: missing required name")
 		if not isinstance(description, str) or not description.strip():

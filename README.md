@@ -94,6 +94,7 @@ This repository contains a few skills to get you started. You can also contribut
 | Name | Description | Documentation |
 |------|-------------|---------------|
 | `hf-cli` | Execute Hugging Face Hub operations using the hf CLI. Download models/datasets, upload files, manage repos, and run cloud compute jobs. | [SKILL.md](skills/hf-cli/SKILL.md) |
+| `hf-mcp` | Use Hugging Face Hub via MCP server tools. Search models, datasets, Spaces, papers. Get repo details, fetch documentation, run compute jobs, and use Gradio Spaces as AI tools. | [SKILL.md](skills/hf-mcp/SKILL.md) |
 | `hf-mem` | Hugging Face CLI to estimate the required memory to load Safetensors or GGUF model weights for inference from the Hugging Face Hub | [SKILL.md](skills/hf-mem/SKILL.md) |
 | `huggingface-best` | Find the best AI model for any task by querying Hugging Face leaderboards and benchmarks. Recommends top models based on task type, hardware constraints, and benchmark scores. | [SKILL.md](skills/huggingface-best/SKILL.md) |
 | `huggingface-community-evals` | Add and manage evaluation results in Hugging Face model cards. Supports extracting eval tables from README content, importing scores from Artificial Analysis API, and running custom evaluations with vLLM/lighteval. | [SKILL.md](skills/huggingface-community-evals/SKILL.md) |

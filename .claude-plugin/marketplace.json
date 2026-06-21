@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Agent Skills for AI/ML tasks including dataset creation, model training, evaluation, and research paper publishing on Hugging Face Hub",
-    "version": "1.0.9"
+    "version": "1.0.10"
   },
   "plugins": [
     {
@@ -121,6 +121,12 @@
       "source": "./skills/trl-training",
       "skills": "./",
       "description": "Train and fine-tune transformer language models using TRL (Transformers Reinforcement Learning). Supports SFT, DPO, GRPO, KTO, RLOO and Reward Model training via CLI commands."
+    },
+    {
+      "name": "hf-mcp",
+      "source": "./skills/hf-mcp",
+      "skills": "./",
+      "description": "Use Hugging Face Hub via MCP server tools. Search models, datasets, Spaces, papers. Get repo details, fetch documentation, run compute jobs, and use Gradio Spaces as AI tools."
     }
   ]
 }

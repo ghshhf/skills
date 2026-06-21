@@ -1,6 +1,8 @@
 """Tests for parse_frontmatter function from frontmatter_utils."""
 
+import json
 import sys
+import tempfile
 from pathlib import Path
 
 import pytest
@@ -10,6 +12,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from frontmatter_utils import parse_frontmatter
+from generate_agents import validate_marketplace
 
 
 class TestParseFrontmatter:
@@ -109,6 +112,114 @@ class TestParseFrontmatter:
         result = parse_frontmatter(text)
         # Should parse without error
         assert isinstance(result, dict)
+
+    def test_termux_pkg_priority_over_name(self):
+        """TERMUX_PKG_NAME should take priority over plain 'name' when both exist."""
+        text = "---\nname: fallback-name\nTERMUX_PKG_NAME: preferred-name\ndescription: fallback desc\nTERMUX_PKG_DESCRIPTION: Preferred description\n---\nBody"
+        result = parse_frontmatter(text)
+        # generate_agents.collect_skills uses: meta.get("TERMUX_PKG_NAME") or meta.get("name")
+        resolved_name = result.get("TERMUX_PKG_NAME") or result.get("name")
+        resolved_desc = result.get("TERMUX_PKG_DESCRIPTION") or result.get("description")
+        assert resolved_name == "preferred-name"
+        assert resolved_desc == "Preferred description"
+
+    def test_plain_name_and_description_still_work(self):
+        """Skills using plain 'name'/'description' (like hf-mcp) must also resolve."""
+        text = "---\nname: hf-mcp\ndescription: Use Hugging Face via MCP\n---\nBody"
+        result = parse_frontmatter(text)
+        name = result.get("TERMUX_PKG_NAME") or result.get("name")
+        description = result.get("TERMUX_PKG_DESCRIPTION") or result.get("description")
+        assert name == "hf-mcp"
+        assert description == "Use Hugging Face via MCP"
+
+
+class TestValidateMarketplace:
+    """Tests for generate_agents.validate_marketplace."""
+
+    def _write_skill(self, skills_root: Path, name: str, description: str) -> dict:
+        skill_dir = skills_root / name
+        skill_dir.mkdir(parents=True)
+        (skill_dir / "SKILL.md").write_text(
+            f"---\nTERMUX_PKG_NAME: {name}\nTERMUX_PKG_DESCRIPTION: {description}\n---\nBody\n",
+            encoding="utf-8",
+        )
+        return {"name": name, "description": description, "path": f"skills/{name}"}
+
+    def test_marketplace_matches_skills(self):
+        """When every skill has a matching marketplace entry, no errors should be reported."""
+        tmp = Path(tempfile.mkdtemp())
+        skills_root = tmp / "skills"
+        skills = [
+            self._write_skill(skills_root, "skill-a", "Description A"),
+            self._write_skill(skills_root, "skill-b", "Description B"),
+        ]
+        marketplace = {
+            "plugins": [
+                {"name": "skill-a", "source": "./skills/skill-a"},
+                {"name": "skill-b", "source": "./skills/skill-b"},
+            ]
+        }
+        marketplace_path = tmp / "marketplace.json"
+        marketplace_path.write_text(json.dumps(marketplace), encoding="utf-8")
+
+        errors = validate_marketplace(skills, marketplace_path)
+        assert errors == [], f"Expected no errors, got: {errors}"
+
+    def test_marketplace_missing_skill(self):
+        """A skill without a marketplace entry must surface an error."""
+        tmp = Path(tempfile.mkdtemp())
+        skills_root = tmp / "skills"
+        skills = [
+            self._write_skill(skills_root, "skill-a", "Description A"),
+            self._write_skill(skills_root, "skill-b", "Description B"),
+        ]
+        marketplace = {
+            "plugins": [
+                {"name": "skill-a", "source": "./skills/skill-a"},
+            ]
+        }
+        marketplace_path = tmp / "marketplace.json"
+        marketplace_path.write_text(json.dumps(marketplace), encoding="utf-8")
+
+        errors = validate_marketplace(skills, marketplace_path)
+        assert any("skill-b" in e for e in errors), f"Expected skill-b error, got: {errors}"
+
+    def test_marketplace_name_mismatch(self):
+        """When marketplace name differs from SKILL.md name, it should be reported."""
+        tmp = Path(tempfile.mkdtemp())
+        skills_root = tmp / "skills"
+        skills = [
+            self._write_skill(skills_root, "skill-a", "Description A"),
+        ]
+        marketplace = {
+            "plugins": [
+                {"name": "WRONG-NAME", "source": "./skills/skill-a"},
+            ]
+        }
+        marketplace_path = tmp / "marketplace.json"
+        marketplace_path.write_text(json.dumps(marketplace), encoding="utf-8")
+
+        errors = validate_marketplace(skills, marketplace_path)
+        assert any("WRONG-NAME" in e or "skill-a" in e for e in errors), f"Expected mismatch error, got: {errors}"
+
+    def test_all_real_skills_pass_marketplace_validation(self):
+        """Integration: every skill in repo root should validate against the real marketplace.json."""
+        repo_root = Path(__file__).resolve().parent.parent
+        skills_dir = repo_root / "skills"
+        skill_files = sorted(skills_dir.glob("*/SKILL.md"))
+        assert skill_files, "No SKILL.md files found"
+
+        skills = []
+        for skill_md in skill_files:
+            meta = parse_frontmatter(skill_md.read_text(encoding="utf-8"))
+            name = meta.get("TERMUX_PKG_NAME") or meta.get("name")
+            description = meta.get("TERMUX_PKG_DESCRIPTION") or meta.get("description")
+            assert name, f"Missing name in {skill_md}"
+            assert description, f"Missing description in {skill_md}"
+            skills.append({"name": name, "description": description, "path": f"skills/{skill_md.parent.name}"})
+
+        errors = validate_marketplace(skills)
+        assert errors == [], f"Marketplace validation failed: {errors}"
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ You have additional SKILLs documented in directories containing a "SKILL.md" fil
 
 These skills are:
  - hf-cli -> "skills/hf-cli/SKILL.md"
+ - hf-mcp -> "skills/hf-mcp/SKILL.md"
  - hf-mem -> "skills/hf-mem/SKILL.md"
  - huggingface-best -> "skills/huggingface-best/SKILL.md"
  - huggingface-community-evals -> "skills/huggingface-community-evals/SKILL.md"
@@ -28,6 +29,7 @@ IMPORTANT: You MUST read the SKILL.md file whenever the description of the skill
 <available_skills>
 
 hf-cli: `Hugging Face Hub CLI (`hf`) for downloading, uploading, and managing models, datasets, spaces, buckets, repos, papers, jobs, and more on the Hugging Face Hub`
+hf-mcp: `Use Hugging Face Hub via MCP server tools. Search models, datasets, Spaces, papers. Get repo details, fetch documentation, run compute jobs, and use Gradio Spaces as AI tools. Available when connected to the HF MCP server.`
 hf-mem: `Hugging Face CLI to estimate the required memory to load Safetensors or GGUF model weights for inference from the Hugging Face Hub`
 huggingface-best: `Find the best AI model for any task by querying Hugging Face leaderboards and benchmarks. Recommends top models based on task type, hardware constraints, and benchmark scores`
 huggingface-community-evals: `Run evaluations for Hugging Face Hub models using inspect-ai and lighteval on local hardware. Use for backend selection, local GPU evals, and choosing between vLLM / Transformers / accelerate. Not for HF Jobs orchestration, model-card PRs, .eval_results publication, or community-evals automation.`
